@@ -1,7 +1,7 @@
 import Vue from 'vue';
-import store from '@/store';
 import VueRouter from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+import store from '@/store';
 
 Vue.use(VueRouter);
 
@@ -16,18 +16,24 @@ const routes = [
     path: '/destination/:slug',
     name: 'DestinationDetails',
     props: true,
-    component: () => import(/* webpackChunkName: "DestinationDetails" */ '../views/DestinationDetailsView.vue'),
+    component: () =>
+      import(
+        /* webpackChunkName: "DestinationDetails" */ '../views/DestinationDetailsView.vue'
+      ),
     children: [
       {
         path: ':experienceSlug',
         name: 'experienceDetails',
         props: true,
-        component: () => import(/* webpackChunkName: "ExperienceDetails" */ '../views/ExperienceDetailsView.vue'),
+        component: () =>
+          import(
+            /* webpackChunkName: "ExperienceDetails" */ '../views/ExperienceDetailsView.vue'
+          ),
       },
     ],
     beforeEnter: (to, from, next) => {
       const exists = store.destinations.find(
-        (destination) => destination.slug === to.params.slug,
+        (destination) => destination.slug === to.params.slug
       );
       if (exists) {
         next();
@@ -40,7 +46,8 @@ const routes = [
     path: '/404',
     alias: '*',
     name: 'notFound',
-    component: () => import(/* webpackChunkName: "NotFound" */ '../views/NotFound.vue'),
+    component: () =>
+      import(/* webpackChunkName: "NotFound" */ '../views/NotFound.vue'),
   },
 ];
 

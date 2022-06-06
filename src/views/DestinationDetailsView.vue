@@ -58,7 +58,7 @@ export default {
   computed: {
     destination() {
       return store.destinations.find(
-        (destination) => destination.slug === this.slug,
+        (destination) => destination.slug === this.slug
       );
     },
   },

@@ -29,12 +29,12 @@ export default {
   computed: {
     destination() {
       return store.destinations.find(
-        (destination) => destination.slug === this.slug,
+        (destination) => destination.slug === this.slug
       );
     },
     experience() {
       return this.destination.experiences.find(
-        (experience) => experience.slug === this.experienceSlug,
+        (experience) => experience.slug === this.experienceSlug
       );
     },
   },
